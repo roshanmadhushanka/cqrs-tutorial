@@ -34,7 +34,7 @@ public class UserAggregate {
         User newUser = command.getUser();
         newUser.setId(command.getId());
         String password = newUser.getAccount().getPassword();
-        this.passwordEncoder = new PasswordEncoderImpl(); // @Todo Try to use a different method (handle) instead of a constructor
+        this.passwordEncoder = new PasswordEncoderImpl();
         newUser.getAccount().setPassword(passwordEncoder.hashPassword(password));
 
         AggregateLifecycle.apply(UserRegisteredEvent.builder()
