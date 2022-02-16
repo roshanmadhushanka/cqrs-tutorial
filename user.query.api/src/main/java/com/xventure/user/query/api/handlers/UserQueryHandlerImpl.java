@@ -1,5 +1,6 @@
 package com.xventure.user.query.api.handlers;
 
+import com.xventure.user.core.models.User;
 import com.xventure.user.query.api.dto.UserLookupResponse;
 import com.xventure.user.query.api.queries.FindAllUsersQuery;
 import com.xventure.user.query.api.queries.FindUserByIdQuery;
@@ -9,6 +10,7 @@ import org.axonframework.queryhandling.QueryHandler;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -30,12 +32,14 @@ public class UserQueryHandlerImpl implements UserQueryHandler {
     @QueryHandler
     @Override
     public UserLookupResponse searchUsers(SearchUsersQuery query) {
-        return new UserLookupResponse(userRepository.findByFilterRegex(query.getFilter()));
+        List<User> users = userRepository.findByFilterRegex(query.getFilter());
+        return new UserLookupResponse(users);
     }
 
     @QueryHandler
     @Override
     public UserLookupResponse getAllUsers(FindAllUsersQuery query) {
-        return new UserLookupResponse(userRepository.findAll());
+        List<User> users = userRepository.findAll();
+        return new UserLookupResponse(users);
     }
 }

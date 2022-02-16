@@ -1,4 +1,4 @@
-package com.xventure.user.cmd.api.dto;
+package com.xventure.user.core.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

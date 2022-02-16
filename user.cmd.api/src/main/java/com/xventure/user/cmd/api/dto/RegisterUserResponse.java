@@ -1,5 +1,6 @@
 package com.xventure.user.cmd.api.dto;
 
+import com.xventure.user.core.dto.BaseResponse;
 import lombok.Getter;
 
 @Getter
